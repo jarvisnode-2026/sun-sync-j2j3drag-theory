@@ -1,0 +1,64 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-03: J3 Potential in Spherical Coordinates}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Express Earth's J3 gravitational perturbation potential in spherical coordinates.
+
+\section{J3 Gravitational Potential}
+
+The third zonal harmonic J3 contributes:
+
+\begin{equation}
+U_{J3}(r, \phi) = -\frac{\mu}{r}\left[J_3\left(\frac{R_E}{r}\right)^3 P_3(\sin \phi)\right]
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $J_3 = -2.5327 \times 10^{-6}$ (negative, Northern hemisphere bulge)
+    \item $P_3(x) = (5x^3 - 3x)/2$ (Legendre polynomial, degree 3)
+\end{itemize}
+
+\section{Disturbing Potential}
+
+\begin{equation}
+\boxed{R_{J3}(r, \phi) = \frac{\mu J_3 R_E^3}{r^4} P_3(\sin \phi)}
+\label{eq:rj3}
+\end{equation}
+
+Expanded:
+\begin{equation}
+R_{J3}(r, \phi) = \frac{\mu J_3 R_E^3}{2r^4}\left(5\sin^3 \phi - 3\sin \phi\right)
+\end{equation}
+
+\section{Key Differences from J2}
+
+\begin{enumerate}
+    \item \textbf{Odd degree:} $r^{-4}$ vs. $r^{-3}$ for J2
+    \item \textbf{Odd function:} $P_3(-x) = -P_3(x)$ creates North-South asymmetry
+    \item \textbf{Magnitude:} $|J_3/J_2| \approx 2.3 \times 10^{-3}$ (J3 is ~0.23\% of J2)
+\end{enumerate}
+
+\section{Dimensional Analysis}
+
+\begin{equation}
+[R_{J3}] = \frac{[\mu][R_E^3]}{[r^4]} = \frac{\text{m}^3/\text{s}^2 \cdot \text{m}^3}{\text{m}^4} = \text{m}^2/\text{s}^2 \quad \checkmark
+\end{equation}
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] J3 potential with $P_3$ Legendre polynomial
+    \item[$\checkmark$] Odd-degree structure noted
+    \item[$\checkmark$] Dimensional analysis passed
+\end{itemize}
+
+\end{document}

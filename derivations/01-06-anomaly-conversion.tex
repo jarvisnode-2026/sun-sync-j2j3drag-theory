@@ -1,0 +1,65 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-06: Anomaly Conversion Strategy}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Establish strategy for converting true anomaly $f$ to mean anomaly $M$ for time-averaging.
+
+\section{Anomaly Relations}
+
+\textbf{True to eccentric:}
+\begin{equation}
+\tan\frac{f}{2} = \sqrt{\frac{1+e}{1-e}} \tan\frac{E}{2}
+\end{equation}
+
+\textbf{Eccentric to mean (Kepler):}
+\begin{equation}
+M = E - e\sin E
+\end{equation}
+
+\section{Fourier Expansion Approach}
+
+For time-averaging in Phase 3, we need $\sin(\omega+f)$, $\cos(\omega+f)$ as Fourier series in $M$:
+
+\begin{align}
+\sin(\omega + f) &= \sum_{k=1}^{\infty} A_k(e) \sin(k M + \omega)\\
+\cos(\omega + f) &= \sum_{k=0}^{\infty} B_k(e) \cos(k M + \omega)
+\end{align}
+
+where $A_k(e)$, $B_k(e)$ are Hansen coefficients or Bessel function representations.
+
+\section{Time-Averaging Principle}
+
+\begin{equation}
+\langle g(M) \rangle = \frac{1}{2\pi}\int_0^{2\pi} g(M)\, dM
+\end{equation}
+
+Orthogonality:
+\begin{align}
+\langle \sin(kM) \rangle &= 0 \quad \forall k \geq 1\\
+\langle \cos(kM) \rangle &= \delta_{k,0}
+\end{align}
+
+Only $k=0$ (constant) terms survive averaging.
+
+\section{Phase 3 Handoff}
+
+Explicit Fourier coefficients will be computed in Phase 3 when applying time-averaging to partial derivatives $\partial R/\partial(\text{elements})$.
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Anomaly relations stated
+    \item[$\checkmark$] Fourier expansion strategy outlined
+    \item[$\checkmark$] Averaging principle documented
+\end{itemize}
+
+\end{document}

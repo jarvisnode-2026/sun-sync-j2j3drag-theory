@@ -1,0 +1,61 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-05: Orbital Radius Expressions}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Express orbital radius in anomaly variables and derive series expansions for $r^{-3}$ and $r^{-4}$.
+
+\section{Radius Formulas}
+
+From true anomaly:
+\begin{equation}
+r = \frac{a(1-e^2)}{1 + e\cos f} = \frac{p}{1 + e\cos f}
+\end{equation}
+
+From eccentric anomaly:
+\begin{equation}
+\boxed{r = a(1 - e\cos E)}
+\label{eq:r_E}
+\end{equation}
+
+Kepler's equation:
+\begin{equation}
+M = E - e\sin E
+\end{equation}
+
+\section{Series Expansions}
+
+From Eq.~\eqref{eq:r_E}, $r^{-1} = a^{-1}(1 - e\cos E)^{-1} \approx a^{-1}[1 + e\cos E + O(e^2)]$
+
+Therefore:
+\begin{align}
+r^{-3} &\approx a^{-3}(1 + e\cos E)^3 \approx a^{-3}[1 + 3e\cos E + O(e^2)]\\
+r^{-4} &\approx a^{-4}(1 + e\cos E)^4 \approx a^{-4}[1 + 4e\cos E + O(e^2)]
+\end{align}
+
+\section{Conversion to Mean Anomaly}
+
+From Kepler's equation to first order in $e$:
+\begin{equation}
+\cos E \approx \cos M - \frac{e}{2} + \frac{e}{2}\cos 2M + O(e^2)
+\end{equation}
+
+When averaged: $\langle \cos E \rangle = -e/2 + O(e^2)$ (constant term survives).
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Radius in $(f, E)$ documented
+    \item[$\checkmark$] Series expansions $r^{-3}$, $r^{-4}$ to $O(e)$
+    \item[$\checkmark$] Kepler equation stated
+\end{itemize}
+
+\end{document}

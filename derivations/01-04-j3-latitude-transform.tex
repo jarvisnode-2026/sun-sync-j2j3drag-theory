@@ -1,0 +1,55 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-04: J3 Latitude Transformation}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Expand $P_3(\sin \phi)$ in orbital elements.
+
+\section{P3 Expansion}
+
+Using $\sin \phi = \sin i \sin(\omega + f)$ and $P_3(x) = (5x^3 - 3x)/2$:
+
+\begin{align}
+P_3(\sin \phi) &= \frac{1}{2}\left[5\sin^3 \phi - 3\sin \phi\right]\\
+&= \frac{1}{2}\sin \phi\left[5\sin^2 \phi - 3\right]\\
+&= \frac{1}{2}\sin i \sin(\omega+f)\left[5\sin^2 i \sin^2(\omega+f) - 3\right]
+\end{align}
+
+Using $\sin^2(\omega+f) = (1 - \cos 2(\omega+f))/2$:
+
+\begin{align}
+P_3(\sin \phi) = \frac{\sin i \sin(\omega+f)}{4}&\left[5\sin^2 i (1 - \cos 2(\omega+f)) - 6\right]\\
+= \frac{\sin i \sin(\omega+f)}{4}&\left[(5\sin^2 i - 6) - 5\sin^2 i \cos 2(\omega+f)\right]
+\end{align}
+
+Using product-to-sum: $\sin(\omega+f)\cos 2(\omega+f) = [\sin(3(\omega+f)) - \sin(\omega+f)]/2$:
+
+\begin{equation}
+\boxed{P_3(\sin \phi) = \frac{\sin i}{8}\left[(5\sin^2 i - 6)\sin(\omega+f) - 5\sin^2 i \sin 3(\omega+f) + 5\sin^2 i \sin(\omega+f)\right]}
+\end{equation}
+
+Simplified:
+\begin{equation}
+P_3(\sin \phi) = \frac{\sin i}{8}\left[(10\sin^2 i - 6)\sin(\omega+f) - 5\sin^2 i \sin 3(\omega+f)\right]
+\end{equation}
+
+\section{Structure}
+Multiple Fourier modes: $\sin(\omega+f)$, $\sin 3(\omega+f)$ — both oscillating terms for averaging.
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] $P_3$ expanded in orbital elements
+    \item[$\checkmark$] Product-to-sum applied
+    \item[$\checkmark$] Multiple Fourier modes identified
+\end{itemize}
+
+\end{document}

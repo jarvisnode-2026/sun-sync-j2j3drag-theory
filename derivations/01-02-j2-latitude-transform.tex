@@ -1,0 +1,82 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-02: J2 Latitude Transformation}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Transform geocentric latitude $\phi$ from spherical coordinates to orbital elements $(i, \omega, f)$ and expand $P_2(\sin \phi)$ for averaging.
+
+\section{Latitude in Orbital Elements}
+
+The geocentric latitude $\phi$ is the angle between the position vector and the equatorial plane. In the orbital plane, the satellite's angular position from the ascending node is $\omega + f$. The $Z$-component (perpendicular to equator) is:
+
+\begin{equation}
+Z = r \sin i \sin(\omega + f) = r \sin \phi
+\end{equation}
+
+Therefore:
+\begin{equation}
+\boxed{\sin \phi = \sin i \sin(\omega + f)}
+\label{eq:sin_phi}
+\end{equation}
+
+\section{Expansion of P2(sin φ)}
+
+Substitute Eq.~\eqref{eq:sin_phi} into $P_2(\sin \phi) = (3\sin^2 \phi - 1)/2$:
+
+\begin{equation}
+P_2(\sin \phi) = \frac{1}{2}\left[3\sin^2 i \sin^2(\omega + f) - 1\right]
+\end{equation}
+
+Using $\sin^2 \theta = (1 - \cos 2\theta)/2$:
+
+\begin{align}
+P_2(\sin \phi) &= \frac{1}{2}\left[3\sin^2 i \cdot \frac{1 - \cos 2(\omega + f)}{2} - 1\right]\\
+&= \frac{1}{4}\left[3\sin^2 i - 3\sin^2 i \cos 2(\omega + f) - 2\right]
+\end{align}
+
+\begin{equation}
+\boxed{P_2(\sin \phi) = \frac{1}{4}\left[(3\sin^2 i - 2) - 3\sin^2 i \cos 2(\omega + f)\right]}
+\label{eq:p2_expanded}
+\end{equation}
+
+\section{Structure for Averaging}
+
+Equation~\eqref{eq:p2_expanded} has two terms:
+
+\begin{itemize}
+    \item \textbf{Constant term:} $(3\sin^2 i - 2)/4$ — independent of $(\omega + f)$
+    \item \textbf{Oscillating term:} $-3\sin^2 i \cos 2(\omega + f)/4$ — varies with $(\omega + f)$
+\end{itemize}
+
+When time-averaging over mean anomaly $M$ in Phase 3:
+\begin{itemize}
+    \item Constant term survives $\rightarrow$ contributes to \textbf{secular rates}
+    \item Oscillating term averages to zero $\rightarrow$ \textbf{short-period variations}
+\end{itemize}
+
+\section{J2 Disturbing Potential in Orbital Elements}
+
+Substituting Eq.~\eqref{eq:p2_expanded} into $R_{J2} = (\mu J_2 R_E^2/r^3) P_2(\sin \phi)$:
+
+\begin{equation}
+\boxed{R_{J2} = \frac{\mu J_2 R_E^2}{4r^3}\left[(3\sin^2 i - 2) - 3\sin^2 i \cos 2(\omega + f)\right]}
+\label{eq:rj2_orbital}
+\end{equation}
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] $\sin \phi$ expressed in $(i, \omega, f)$
+    \item[$\checkmark$] $P_2(\sin \phi)$ expanded in orbital elements
+    \item[$\checkmark$] Constant vs. oscillating structure identified
+\end{itemize}
+
+\end{document}

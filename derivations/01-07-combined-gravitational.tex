@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-07: Combined Gravitational Potential}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Combine J2 and J3 disturbing potentials into total gravitational perturbation function.
+
+\section{Combined Gravitational Disturbing Potential}
+
+\begin{equation}
+\boxed{R_{\text{grav}}(a,e,i,\Omega,\omega,M) = R_{J2} + R_{J3}}
+\label{eq:rgrav}
+\end{equation}
+
+Explicitly:
+\begin{align}
+R_{J2} &= \frac{\mu J_2 R_E^2}{4r^3(M)}\left[(3\sin^2 i - 2) - 3\sin^2 i \cos 2(\omega + f(M))\right]\\
+R_{J3} &= \frac{\mu J_3 R_E^3}{r^4(M)} P_3[\sin i \sin(\omega + f(M))]
+\end{align}
+
+where:
+\begin{itemize}
+    \item $r = a(1 - e\cos E(M))$ via Kepler equation $M = E - e\sin E$
+    \item $f = f(E)$ via true-to-eccentric anomaly relation
+    \item All dependencies on $M$ are explicit through $E(M)$ and $f(E)$
+\end{itemize}
+
+\section{Dependency Structure}
+
+\begin{center}
+\begin{tabular}{c|l}
+\textbf{Element} & \textbf{How it enters $R_{\text{grav}}$} \\
+\hline
+$a$ & Through $r \propto a$ (both $r^{-3}$ and $r^{-4}$ terms) \\
+$e$ & Through $r(e,E)$ and $f(e,E)$ (series expansions) \\
+$i$ & Explicit: $\sin^2 i$ (J2), $\sin i$ (J3) \\
+$\Omega$ & \textbf{ABSENT} (axisymmetry) \\
+$\omega$ & Explicit: $(\omega + f)$ in trigonometric terms \\
+$M$ & Through $E(M)$ via Kepler equation \\
+\end{tabular}
+\end{center}
+
+\section{Axisymmetry Verification}
+
+Both J2 and J3 potentials are axisymmetric (no $\lambda$ or $\Omega$ dependence):
+
+\begin{equation}
+\frac{\partial R_{\text{grav}}}{\partial \Omega} = \frac{\partial R_{J2}}{\partial \Omega} + \frac{\partial R_{J3}}{\partial \Omega} = 0 + 0 = 0
+\end{equation}
+
+\textbf{Consequence:} From Lagrange equations, this leads to $\langle di/dt \rangle_{\text{secular}} = 0$ (no secular change in inclination from gravitational harmonics alone).
+
+\section{Magnitude Comparison}
+
+At LEO (h = 700 km, r $\approx$ 7078 km):
+\begin{align}
+\left|\frac{R_{J2}}{U_{\text{point}}}\right| &\approx J_2\left(\frac{R_E}{r}\right)^2 \approx 8.8 \times 10^{-4}\\
+\left|\frac{R_{J3}}{U_{\text{point}}}\right| &\approx J_3\left(\frac{R_E}{r}\right)^3 \approx 2.0 \times 10^{-6}
+\end{align}
+
+J3 is ~0.23\% of J2 — small but non-negligible for long-term predictions.
+
+\section{Structure Ready for Phase 3}
+
+$R_{\text{grav}}$ is now fully expressed in orbital elements. In Phase 3, we will:
+\begin{enumerate}
+    \item Compute partial derivatives: $\partial R_{\text{grav}}/\partial a$, $\partial R_{\text{grav}}/\partial e$, etc.
+    \item Expand in Fourier series in $M$ using anomaly conversions from Plan 01-06
+    \item Time-average: $\langle \partial R_{\text{grav}}/\partial x \rangle$
+    \item Substitute into Lagrange equations to get secular rates
+\end{enumerate}
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Combined $R_{\text{grav}} = R_{J2} + R_{J3}$ written
+    \item[$\checkmark$] All dependencies documented
+    \item[$\checkmark$] Axisymmetry verified ($\partial R/\partial \Omega = 0$)
+    \item[$\checkmark$] Magnitude comparison provided
+    \item[$\checkmark$] Framework ready for Phase 3
+\end{itemize}
+
+\end{document}
