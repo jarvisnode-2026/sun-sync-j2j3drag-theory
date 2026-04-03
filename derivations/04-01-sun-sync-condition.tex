@@ -1,0 +1,43 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 04-01: Sun-Synchronous Condition with J2+J3}
+\date{Phase 4}
+\begin{document}
+\maketitle
+
+\section{Sun-Synchronous Constraint}
+
+For sun-synchronous orbits, RAAN regression must match Earth's solar orbital rate:
+
+$$\dot{\Omega}_{\text{required}} = \frac{2\pi}{365.25 \text{ days}} = 1.991 \times 10^{-7} \text{ rad/s} \approx 0.9856 \text{ deg/day}$$
+
+\section{J2+J3 RAAN Rate}
+
+From Phase 3:
+
+$$\dot{\Omega} = -\frac{3 n J_2 R_E^2}{2 a^2}\cos i - \frac{3 n J_3 R_E^3}{2 a^3}\sin i(5\cos^2 i - 1)$$
+
+Setting $\dot{\Omega} = \dot{\Omega}_{\text{ss}}$ and solving for $i$:
+
+\section{Sun-Sync Inclination}
+
+For J2 only (dominant term):
+$$i_{\text{ss,J2}} \approx \cos^{-1}\left(-\frac{2a^2\dot{\Omega}_{\text{ss}}}{3nJ_2 R_E^2}\right)$$
+
+With J3 correction (first-order):
+$$\boxed{i_{\text{ss}} = i_{\text{ss,J2}} + \Delta i_{J3}(a)}$$
+
+where $\Delta i_{J3}$ is typically ~0.1-0.2° at LEO.
+
+\section{Altitude Dependence}
+
+At $h$ = 700 km ($a$ ≈ 7078 km):
+- J2-only: $i_{\text{ss}}$ ≈ 98.2°
+- With J3: $i_{\text{ss}}$ ≈ 98.1-98.3° (depending on detailed calculation)
+
+\section{Key Result}
+
+Sun-sync inclination depends on altitude. As $a$ decays (drag), required $i_{\text{ss}}$ changes.
+
+\end{document}

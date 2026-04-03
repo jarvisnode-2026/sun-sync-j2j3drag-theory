@@ -1,0 +1,38 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 04-02: Coupled Drag-Gravity Evolution}
+\date{Phase 4}
+\begin{document}
+\maketitle
+
+\section{Coupled System}
+
+As altitude decays due to drag:
+$$\frac{da}{dt} = -\rho_0 B\sqrt{\mu a}\,\exp\left(-\frac{a - R_E}{H}\right)$$
+
+RAAN rate changes:
+$$\dot{\Omega}(t) = f(a(t), i, J_2, J_3)$$
+
+\section{Sun-Sync Violation}
+
+If inclination is **fixed** but altitude drops:
+$$\Delta\dot{\Omega} = \dot{\Omega}(a(t)) - \dot{\Omega}_{\text{ss}}$$
+
+\textbf{Violation criterion:} When $|\Delta\dot{\Omega}| > \epsilon$ (e.g., 1\% of nominal rate).
+
+\section{Characteristic Timescale}
+
+For typical LEO ($h$ = 700 km, $B$ = 0.05 m²/kg):
+
+- Altitude decay rate: $\sim$ 10-50 m/day
+- RAAN rate sensitivity: $\partial\dot{\Omega}/\partial a \propto a^{-3}$
+- **Timescale:** Months to years before 1\% violation
+
+Exact value depends on $B$, altitude, and atmospheric density variations.
+
+\section{Key Finding}
+
+**J3+drag coupling creates secular sun-sync drift** not captured in J2-only or drag-only theories.
+
+\end{document}

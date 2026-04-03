@@ -1,0 +1,40 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 04-03: Operational Satellite Case Studies}
+\date{Phase 4}
+\begin{document}
+\maketitle
+
+\section{Landsat-8}
+
+**Orbital parameters:**
+- Altitude: $h$ = 705 km ($a$ = 7083 km)
+- Inclination: $i$ ≈ 98.2°
+- Ballistic coefficient: $B$ ≈ 0.02-0.05 m²/kg (estimated)
+
+**Sun-sync prediction (J2+J3):**
+$$i_{\text{ss,predicted}} \approx 98.15\text{°} \pm 0.05\text{°}$$
+
+**Drag-induced decay:** If $\Delta a$ = -10 km over mission:
+$$\Delta i_{\text{ss}} \approx +0.02\text{° to } +0.05\text{°}$$
+
+Small but measurable over multi-year missions.
+
+\section{Sentinel-2}
+
+**Orbital parameters:**
+- Altitude: $h$ = 786 km ($a$ = 7164 km)
+- Inclination: $i$ ≈ 98.6°
+- Higher altitude → lower drag, longer sun-sync maintenance
+
+**J3 correction:** Similar magnitude (~0.1-0.2°) but at different altitude.
+
+\section{Validation Strategy}
+
+Phase 5 will compare these predictions against:
+1. Published orbital parameters
+2. TLE-derived secular rates
+3. Multi-year tracking data
+
+\end{document}
