@@ -1,0 +1,161 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 01-01: J2 Potential in Spherical Coordinates}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 1}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+
+Express the Earth's J2 gravitational perturbation potential in spherical coordinates and isolate the disturbing potential for perturbation analysis.
+
+\section{Earth's Gravitational Potential with J2}
+
+The gravitational potential of an oblate spheroid (Earth) including the dominant J2 zonal harmonic is:
+
+\begin{equation}
+U(r, \phi, \lambda) = -\frac{\mu}{r}\left[1 - J_2\left(\frac{R_E}{r}\right)^2 P_2(\sin \phi)\right]
+\label{eq:full_potential}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\mu = GM_\oplus = 3.986004418 \times 10^{14}$ m$^3$/s$^2$ — Earth's gravitational parameter
+    \item $r$ — geocentric distance [m]
+    \item $\phi$ — geocentric latitude [rad]
+    \item $\lambda$ — longitude [rad] (does not appear due to axisymmetry)
+    \item $R_E = 6.378137 \times 10^6$ m — Earth's mean equatorial radius
+    \item $J_2 = 1.08263 \times 10^{-3}$ — second zonal harmonic coefficient [dimensionless]
+    \item $P_2(x)$ — Legendre polynomial of degree 2
+\end{itemize}
+
+\section{Legendre Polynomial P2}
+
+The second-degree Legendre polynomial is:
+\begin{equation}
+P_2(x) = \frac{1}{2}(3x^2 - 1)
+\label{eq:P2}
+\end{equation}
+
+Therefore:
+\begin{equation}
+P_2(\sin \phi) = \frac{1}{2}(3\sin^2 \phi - 1)
+\label{eq:P2_phi}
+\end{equation}
+
+\subsection{Special Values}
+
+Verification at key latitudes:
+\begin{align}
+\phi = 0° \text{ (equator)}: \quad P_2(0) &= -\frac{1}{2}\\
+\phi = 90° \text{ (pole)}: \quad P_2(1) &= 1\\
+\phi = 45°: \quad P_2(\sin 45°) &= P_2(1/\sqrt{2}) = -\frac{1}{4}
+\end{align}
+
+\section{Disturbing Potential}
+
+The \textbf{disturbing potential} (or perturbation function) $R$ is defined as the deviation from the point-mass potential:
+
+\begin{equation}
+R = U - U_{\text{point mass}} = U - \left(-\frac{\mu}{r}\right)
+\end{equation}
+
+Substituting Eq.~\eqref{eq:full_potential}:
+\begin{equation}
+R_{J2}(r, \phi) = -\frac{\mu}{r}\left[- J_2\left(\frac{R_E}{r}\right)^2 P_2(\sin \phi)\right]
+\end{equation}
+
+Simplifying:
+\begin{equation}
+\boxed{R_{J2}(r, \phi) = \frac{\mu J_2 R_E^2}{r^3} P_2(\sin \phi)}
+\label{eq:disturbing_potential}
+\end{equation}
+
+Substituting $P_2$ from Eq.~\eqref{eq:P2_phi}:
+\begin{equation}
+R_{J2}(r, \phi) = \frac{\mu J_2 R_E^2}{2r^3}\left(3\sin^2 \phi - 1\right)
+\label{eq:disturbing_expanded}
+\end{equation}
+
+\section{Dimensional Analysis}
+
+Verify that $R_{J2}$ has dimensions of specific energy [m$^2$/s$^2$]:
+
+\begin{align}
+[R_{J2}] &= \frac{[\mu][R_E^2]}{[r^3]}\\
+&= \frac{\text{m}^3/\text{s}^2 \cdot \text{m}^2}{\text{m}^3}\\
+&= \frac{\text{m}^5/\text{s}^2}{\text{m}^3}\\
+&= \text{m}^2/\text{s}^2 \quad \checkmark
+\end{align}
+
+This confirms $R_{J2}$ has dimensions of energy per unit mass, correct for a gravitational potential.
+
+\section{Physical Interpretation}
+
+\subsection{Sign of the Perturbation}
+
+The disturbing potential $R_{J2}$ varies with latitude:
+
+\begin{itemize}
+    \item \textbf{Equator} ($\phi = 0°$): $P_2(0) = -1/2$ $\Rightarrow$ $R_{J2} < 0$ (attractive)
+    \item \textbf{Poles} ($\phi = \pm 90°$): $P_2(\pm 1) = 1$ $\Rightarrow$ $R_{J2} > 0$ (repulsive)
+    \item \textbf{Mid-latitudes} ($\phi = \pm 45°$): $P_2(\sin 45°) = -1/4$ $\Rightarrow$ $R_{J2} < 0$ (attractive)
+\end{itemize}
+
+This reflects Earth's oblate shape:
+- The equatorial bulge creates additional gravitational attraction at low latitudes
+- The polar flattening creates relative repulsion at high latitudes
+
+\subsection{Axisymmetry}
+
+The J2 potential depends only on $(r, \phi)$ and is independent of longitude $\lambda$. This axisymmetry is a consequence of Earth's approximate rotational symmetry about the polar axis.
+
+\textbf{Implication:} The disturbing potential does not depend on the RAAN ($\Omega$) when expressed in orbital elements, which will lead to $\partial R_{J2}/\partial \Omega = 0$ and thus no secular change in inclination.
+
+\section{Comparison with Point-Mass Potential}
+
+The point-mass potential is:
+\begin{equation}
+U_{\text{point mass}} = -\frac{\mu}{r}
+\end{equation}
+
+The J2 correction is:
+\begin{equation}
+\frac{R_{J2}}{U_{\text{point mass}}} = -J_2\left(\frac{R_E}{r}\right)^2 P_2(\sin \phi)
+\end{equation}
+
+At LEO altitudes (h = 700 km, r ≈ 7078 km):
+\begin{equation}
+\left|\frac{R_{J2}}{U_{\text{point mass}}}\right| \approx J_2\left(\frac{6378}{7078}\right)^2 \approx 1.08 \times 10^{-3} \times 0.813 \approx 8.8 \times 10^{-4}
+\end{equation}
+
+The J2 perturbation is about 0.088\% of the point-mass potential — small but non-negligible for long-term orbit prediction.
+
+\section{Success Criteria}
+
+\begin{itemize}
+    \item[$\checkmark$] J2 potential expressed with explicit Legendre polynomial: Eq.~\eqref{eq:full_potential}
+    \item[$\checkmark$] Disturbing potential $R_{J2}$ isolated from point-mass term: Eq.~\eqref{eq:disturbing_potential}
+    \item[$\checkmark$] Dimensional analysis confirmed: [m$^2$/s$^2$]
+    \item[$\checkmark$] Physical interpretation provided
+    \item[$\checkmark$] Axisymmetry noted
+\end{itemize}
+
+\section{Next Steps}
+
+In Plan 01-02, we will express the geocentric latitude $\phi$ in terms of orbital elements $(i, \omega, f)$, transforming $R_{J2}$ from spherical coordinates to orbital element space.
+
+\section{References}
+
+\begin{itemize}
+    \item Vallado, D. A. (2013). \textit{Fundamentals of Astrodynamics and Applications} (4th ed.). Equation 9-38.
+    \item CONVENTIONS.md: Physical constants, Legendre polynomial definitions
+\end{itemize}
+
+\end{document}
