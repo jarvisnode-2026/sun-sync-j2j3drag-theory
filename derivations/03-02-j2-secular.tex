@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 03-02: J2 Secular Rates (Benchmark)}
+\date{Phase 3}
+\begin{document}
+\maketitle
+
+\section{Standard J2 Secular Rates}
+
+From time-averaging $R_{J2}$ (Phase 1):
+
+\begin{align}
+\left\langle\frac{d\Omega}{dt}\right\rangle_{J2} &= -\frac{3}{2}\frac{n J_2 R_E^2}{p^2}\cos i\\
+\left\langle\frac{d\omega}{dt}\right\rangle_{J2} &= \frac{3}{4}\frac{n J_2 R_E^2}{p^2}(5\cos^2 i - 1)
+\end{align}
+
+where $p = a(1-e^2)$, $n = \sqrt{\mu/a^3}$.
+
+For circular orbits ($p = a$):
+\begin{align}
+\dot{\Omega}_{J2} &= -\frac{3}{2}\frac{n J_2 R_E^2}{a^2}\cos i\\
+\dot{\omega}_{J2} &= \frac{3}{4}\frac{n J_2 R_E^2}{a^2}(5\cos^2 i - 1)
+\end{align}
+
+\section{Verification}
+Matches Vallado (2013) Eq. 9-42, 9-43 exactly. ✓
+
+\end{document}

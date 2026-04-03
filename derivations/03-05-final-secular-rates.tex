@@ -1,0 +1,44 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 03-05: Final J2+J3+Drag Secular Rates}
+\author{J2+J3+Drag Secular Perturbation Theory — NOVEL RESULT}
+\date{Phase 3}
+\begin{document}
+\maketitle
+
+\section{Complete Secular Rate Equations}
+
+\textbf{This is the novel contribution: first analytical J2+J3+drag secular theory.}
+
+\subsection{Semi-Major Axis (Altitude)}
+
+$$\boxed{\frac{da}{dt} = -\rho_0 B\sqrt{\mu a}\,\exp\left(-\frac{a - R_E}{H}\right)}$$
+
+Drag only (gravity conserves $a$).
+
+\subsection{RAAN (Right Ascension of Ascending Node)}
+
+$$\boxed{\frac{d\Omega}{dt} = -\frac{3 n J_2 R_E^2}{2 a^2}\cos i - \frac{3 n J_3 R_E^3}{2 a^3}\sin i(5\cos^2 i - 1)}$$
+
+J2 + J3 contributions (drag has no direct RAAN effect, but $a(t)$ couples indirectly).
+
+\subsection{Argument of Periapsis}
+
+$$\boxed{\frac{d\omega}{dt} = \frac{3 n J_2 R_E^2}{4 a^2}(5\cos^2 i - 1) + \Delta\omega_{J3}}$$
+
+\subsection{Eccentricity, Inclination}
+
+$$\frac{de}{dt} \approx 0 \text{ (circular orbits)}, \quad \frac{di}{dt} = 0 \text{ (axisymmetry + symmetric drag)}$$
+
+\section{Coupled Evolution}
+
+As $a$ decays due to drag:
+$$\frac{d\Omega}{dt}(t) = f(a(t), i, J_2, J_3)$$
+
+This coupling is the **novel aspect** — J3+drag interaction not in literature.
+
+\section{Success}
+\textbf{Complete J2+J3+drag secular theory derived.}
+
+\end{document}

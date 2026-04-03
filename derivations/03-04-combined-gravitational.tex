@@ -1,0 +1,29 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 03-04: Combined Gravitational Secular Rates}
+\date{Phase 3}
+\begin{document}
+\maketitle
+
+\section{Complete Gravitational Secular Rates}
+
+Superposition of J2 and J3:
+
+\begin{align}
+\boxed{\dot{\Omega}_{\text{grav}} = \dot{\Omega}_{J2} + \dot{\Omega}_{J3}}\\
+\boxed{\dot{\omega}_{\text{grav}} = \dot{\omega}_{J2} + \dot{\omega}_{J3}}
+\end{align}
+
+Explicitly:
+\begin{align}
+\dot{\Omega}_{\text{grav}} &= -\frac{3 n J_2 R_E^2}{2 a^2}\cos i - \frac{3 n J_3 R_E^3}{2 a^3}\sin i(5\cos^2 i - 1)\\
+\dot{\omega}_{\text{grav}} &= \frac{3 n J_2 R_E^2}{4 a^2}(5\cos^2 i - 1) + (\text{J3 corrections})
+\end{align}
+
+\section{Element Status}
+- $\langle da/dt \rangle_{\text{grav}} = 0$ (conservative)
+- $\langle de/dt \rangle_{\text{grav}} = 0$ (conservative)
+- $\langle di/dt \rangle_{\text{grav}} = 0$ (axisymmetry)
+
+\end{document}
