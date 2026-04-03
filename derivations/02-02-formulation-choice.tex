@@ -1,0 +1,92 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 02-02: Gauss vs. Lagrange Formulation}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 2}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Decide whether to use Gauss planetary equations or equivalent disturbing potential for drag perturbations.
+
+\section{Lagrange Planetary Equations (Conservative Forces)}
+
+For conservative perturbations (gravitational harmonics), we used:
+\begin{equation}
+\frac{dx}{dt} = f(R, \text{elements})
+\end{equation}
+where $R$ is a disturbing potential function.
+
+**Requirement:** $R$ must exist as a scalar potential (conservative force).
+
+\section{Gauss Planetary Equations (Non-Conservative Forces)}
+
+For non-conservative forces (drag, thrust), use Gauss form:
+\begin{align}
+\frac{da}{dt} &= \frac{2a^2}{h}\left[e\sin f\, a_R + \frac{p}{r} a_T\right]\\
+\frac{de}{dt} &= \frac{1}{h}\left[\sin f\, a_R + ((\cos f + \cos E) a_T\right]
+\end{align}
+
+where:
+\begin{itemize}
+    \item $a_R$ — radial acceleration component
+    \item $a_T$ — tangential acceleration component (along velocity)
+    \item $h = \sqrt{\mu p} = \sqrt{\mu a(1-e^2)}$ — specific angular momentum
+    \item $p = a(1-e^2)$ — semi-latus rectum
+\end{itemize}
+
+\section{Can Drag Have an Equivalent Potential?}
+
+**Analysis:** Drag force is $\vec{F}_D = -\frac{1}{2}\rho v^2 B\,\hat{v}$ (velocity-dependent).
+
+For a potential $R_{\text{drag}}$ to exist:
+\begin{equation}
+\vec{F}_D = -\nabla R_{\text{drag}}
+\end{equation}
+
+must hold. But drag depends on $\vec{v}$, not just position $\vec{r}$.
+
+**Conclusion:** \textbf{No true scalar potential exists for drag} (velocity-dependent, dissipative).
+
+\section{Decision: Use Gauss Equations}
+
+\textbf{Chosen formulation:} Gauss planetary equations
+
+\textbf{Rationale:}
+\begin{enumerate}
+    \item Drag is dissipative → no conservative potential
+    \item Gauss equations explicitly handle non-conservative forces
+    \item Well-established in literature (King-Hele 1987, Vallado 2013)
+    \item Allows direct treatment of tangential acceleration
+\end{enumerate}
+
+\section{Simplified Form for Circular Orbits}
+
+For near-circular sun-synchronous orbits ($e \ll 1$):
+\begin{itemize}
+    \item $a_R \approx 0$ (drag is tangential)
+    \item $a_N = 0$ (symmetric drag, no out-of-plane component)
+    \item $a_T \approx -\frac{1}{2}\rho v^2 B$ (opposes velocity)
+\end{itemize}
+
+Gauss equations simplify to:
+\begin{align}
+\frac{da}{dt} &\approx \frac{2a^2}{h} \cdot \frac{p}{r} a_T = \frac{2a}{\sqrt{\mu a}} a_T = \frac{2a^{3/2}}{\sqrt{\mu}} a_T\\
+\frac{de}{dt} &\approx \frac{1}{h}(1 + \cos E) a_T\\
+\frac{di}{dt} &= 0 \quad \text{(no normal component)}
+\end{align}
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Both formulations analyzed
+    \item[$\checkmark$] Decision made: \textbf{Gauss equations}
+    \item[$\checkmark$] Rationale documented
+    \item[$\checkmark$] Simplified circular-orbit form identified
+\end{itemize}
+
+\end{document}

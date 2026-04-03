@@ -1,0 +1,78 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 02-03: Drag Perturbation Equations}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 2}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Derive drag perturbation rates for orbital elements using Gauss equations.
+
+\section{Gauss Equations for Drag}
+
+With $a_R = 0$, $a_N = 0$, $a_T = -\frac{1}{2}\rho v^2 B$ (tangential, opposing motion):
+
+\subsection{Semi-Major Axis}
+\begin{align}
+\frac{da}{dt} &= \frac{2a^2}{h}\frac{p}{r} a_T\\
+&= \frac{2a^2}{\sqrt{\mu a(1-e^2)}} \cdot \frac{a(1-e^2)}{a(1-e\cos E)} \cdot a_T\\
+&= \frac{2a^{3/2}\sqrt{1-e^2}}{\sqrt{\mu}(1-e\cos E)} a_T
+\end{align}
+
+For circular orbits ($e = 0$, $r = a$):
+\begin{equation}
+\boxed{\left.\frac{da}{dt}\right|_{\text{drag, circular}} = \frac{2a^{3/2}}{\sqrt{\mu}} a_T = -\frac{a^{3/2}}{\sqrt{\mu}}\rho v^2 B}
+\end{equation}
+
+Substituting $v^2 = \mu/a$ for circular:
+\begin{equation}
+\boxed{\left.\frac{da}{dt}\right|_{\text{drag, circular}} = -a^{1/2}\rho B\sqrt{\mu}}
+\label{eq:dadt_drag}
+\end{equation}
+
+\subsection{Eccentricity}
+\begin{equation}
+\frac{de}{dt} = \frac{1}{h}(1 + \cos E) a_T
+\end{equation}
+
+For circular orbits ($e \to 0$): this rate is small (proportional to existing eccentricity).
+
+\subsection{Inclination}
+\begin{equation}
+\boxed{\frac{di}{dt} = 0}
+\end{equation}
+
+Symmetric drag (no normal component) does not change inclination.
+
+\section{Combined with Density Model}
+
+Substituting $\rho = \rho_0 \exp(-(a - R_E)/H)$ into Eq.~\eqref{eq:dadt_drag}:
+
+\begin{equation}
+\boxed{\frac{da}{dt} = -\rho_0 B\sqrt{\mu a}\,\exp\left(-\frac{a - R_E}{H}\right)}
+\label{eq:dadt_full}
+\end{equation}
+
+This is the **secular drag rate** for semi-major axis (circular orbit approximation).
+
+\section{Physical Interpretation}
+
+- $da/dt < 0$ always → altitude decays
+- Exponential dependence on altitude: drag increases rapidly at lower altitudes
+- Proportional to ballistic coefficient $B$ (high-area, low-mass satellites decay faster)
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Drag rates in orbital elements
+    \item[$\checkmark$] Circular orbit form derived
+    \item[$\checkmark$] Density model integrated
+    \item[$\checkmark$] Physical signs correct ($da/dt < 0$)
+\end{itemize}
+
+\end{document}

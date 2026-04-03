@@ -1,0 +1,35 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 02-05: Drag Averaging Strategy}
+\date{Phase 2}
+\begin{document}
+\maketitle
+
+\section{Secular Nature of Drag}
+
+Unlike gravitational perturbations, drag is **always secular** (dissipative, non-oscillating):
+
+$$\langle da/dt \rangle_{\text{drag}} = da/dt \quad \text{(no oscillating terms to average out)}$$
+
+For circular orbits, the drag rate Eq.~(2-03.7) is already the secular rate.
+
+\section{Eccentricity Corrections}
+
+For eccentric orbits, time-averaging $\langle \rho(E) \rangle$ over $M$ yields corrections $\propto e$.
+
+\section{Combination with Gravity}
+
+In Phase 3:
+$$\frac{da}{dt}_{\text{total}} = \underbrace{\langle \partial R_{\text{grav}}/\partial M \rangle}_{\text{gravity}} + \underbrace{da/dt|_{\text{drag}}}_{\text{drag}}$$
+
+Superposition holds (linear perturbations).
+
+\section{Success}
+\begin{itemize}
+\item[$\checkmark$] Secular structure identified
+\item[$\checkmark$] Averaging outlined
+\item[$\checkmark$] Phase 3 handoff clear
+\end{itemize}
+
+\end{document}

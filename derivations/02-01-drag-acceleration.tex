@@ -1,0 +1,124 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{geometry}
+\geometry{margin=1in}
+
+\title{Plan 02-01: Atmospheric Drag Acceleration}
+\author{J2+J3+Drag Secular Perturbation Theory}
+\date{2026-04-02 — Phase 2}
+
+\begin{document}
+\maketitle
+
+\section{Objective}
+Express atmospheric drag force and acceleration in terms that can be integrated with orbital element framework.
+
+\section{Drag Force}
+
+Atmospheric drag on a satellite:
+\begin{equation}
+\vec{F}_D = -\frac{1}{2}\rho v^2 C_D A \,\hat{v}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $\rho$ — atmospheric density [kg/m³]
+    \item $v$ — orbital velocity magnitude [m/s]
+    \item $C_D$ — drag coefficient [dimensionless], typically 2.0-2.5
+    \item $A$ — cross-sectional area [m²]
+    \item $\hat{v}$ — velocity unit vector (opposite to motion)
+\end{itemize}
+
+\section{Drag Acceleration}
+
+Dividing by satellite mass $m$:
+\begin{equation}
+\boxed{\vec{a}_D = -\frac{1}{2}\rho v^2 B\,\hat{v}}
+\label{eq:drag_accel}
+\end{equation}
+
+where the \textbf{ballistic coefficient} is:
+\begin{equation}
+B = \frac{C_D A}{m} \quad [\text{m}^2/\text{kg}]
+\end{equation}
+
+Typical values: $B \approx 0.01$-$0.1$ m²/kg depending on satellite design.
+
+\section{Exponential Atmosphere Model}
+
+Atmospheric density decreases exponentially with altitude:
+\begin{equation}
+\boxed{\rho(h) = \rho_0 \exp\left(-\frac{h}{H}\right)}
+\label{eq:exponential_density}
+\end{equation}
+
+where:
+\begin{itemize}
+    \item $h = r - R_E$ — altitude above Earth's surface [km]
+    \item $H$ — atmospheric scale height [km], typically 60-80 km (altitude-dependent)
+    \item $\rho_0$ — reference density at altitude $h=0$ or specific reference altitude
+\end{itemize}
+
+\section{Orbital Velocity}
+
+From the vis-viva equation:
+\begin{equation}
+v^2 = \mu\left(\frac{2}{r} - \frac{1}{a}\right)
+\label{eq:vis_viva}
+\end{equation}
+
+For circular orbits ($r = a$):
+\begin{equation}
+v_{\text{circular}} = \sqrt{\frac{\mu}{a}}
+\end{equation}
+
+For near-circular orbits with small eccentricity:
+\begin{equation}
+v \approx \sqrt{\frac{\mu}{a}}\left[1 + O(e)\right]
+\end{equation}
+
+\section{Drag Acceleration Magnitude}
+
+Substituting Eqs.~\eqref{eq:exponential_density} and \eqref{eq:vis_viva} into \eqref{eq:drag_accel}:
+
+\begin{equation}
+a_D = \frac{1}{2}\rho_0 \exp\left(-\frac{r - R_E}{H}\right) \cdot \mu\left(\frac{2}{r} - \frac{1}{a}\right) \cdot B
+\end{equation}
+
+For circular orbits ($r = a$):
+\begin{equation}
+\boxed{a_{D,\text{circular}} = \frac{1}{2}\rho_0 B \frac{\mu}{a} \exp\left(-\frac{a - R_E}{H}\right)}
+\label{eq:drag_circular}
+\end{equation}
+
+\section{Dimensional Analysis}
+
+\begin{align}
+[a_D] &= [\rho][v^2][B]\\
+&= (\text{kg/m}^3)(\text{m}^2/\text{s}^2)(\text{m}^2/\text{kg})\\
+&= \text{m/s}^2 \quad \checkmark
+\end{align}
+
+Correct dimensions for acceleration.
+
+\section{Direction: Tangential Component}
+
+Drag acts opposite to velocity. In the orbital plane:
+\begin{itemize}
+    \item \textbf{Radial component:} $a_R \approx 0$ (velocity is primarily tangential)
+    \item \textbf{Tangential component:} $a_T = -a_D$ (opposes motion)
+    \item \textbf{Normal component:} $a_N = 0$ (drag is in orbital plane)
+\end{itemize}
+
+This will be formalized in Plan 02-03 using Gauss equations.
+
+\section{Success Criteria}
+\begin{itemize}
+    \item[$\checkmark$] Drag acceleration vector expressed
+    \item[$\checkmark$] Ballistic coefficient $B$ defined
+    \item[$\checkmark$] Exponential density model stated
+    \item[$\checkmark$] Dimensional analysis passed
+\end{itemize}
+
+\end{document}

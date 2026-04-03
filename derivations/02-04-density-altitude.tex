@@ -1,0 +1,25 @@
+\documentclass[11pt]{article}
+\usepackage{amsmath, amssymb, geometry}
+\geometry{margin=1in}
+\title{Plan 02-04: Density-Altitude Coupling}
+\date{Phase 2}
+\begin{document}
+\maketitle
+
+\section{Altitude Expression}
+$$h = r - R_E = a(1 - e\cos E) - R_E$$
+
+For near-circular ($e < 0.01$): $h \approx a - R_E$ (mean altitude).
+
+\section{Density at Mean Altitude}
+$$\rho \approx \rho_0 \exp\left(-\frac{a - R_E}{H}\right)$$
+
+Eccentricity corrections: $O(e)$ terms can be added if needed in Phase 3.
+
+\section{Success}
+\begin{itemize}
+\item[$\checkmark$] Density in terms of $a$
+\item[$\checkmark$] Approximation documented
+\end{itemize}
+
+\end{document}
